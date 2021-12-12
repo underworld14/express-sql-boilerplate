@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: marriage_db
+    ports:
+      - '3306:3306'
+    networks:
+      - backend
+    volumes: 
+      - data:/var/lib/mysql
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local
